@@ -9,9 +9,12 @@
 class UStatBarBase;
 
 UCLASS(Abstract)
-class WIDGETSANDUI_API UHealthStaminaBarsBase : public UWidgetBase
+class SNEAKMETACORE_API UHealthStaminaBarsBase : public UWidgetBase
 {
 public:
+	UPROPERTY(EditAnywhere, Category = "Stat Bars")
+	bool Details = false;
+
 	UPROPERTY(BlueprintReadOnly, Category = "Constituent Controls", meta = (BindWidget))
 	TObjectPtr<UStatBarBase> HealthBar = nullptr;
 
@@ -19,6 +22,8 @@ public:
 	TObjectPtr<UStatBarBase> StaminaBar = nullptr;
 
 private:
+	virtual void NativeOnInitialized() override;
+
 	GENERATED_BODY()
 
 };

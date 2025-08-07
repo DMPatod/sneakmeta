@@ -22,6 +22,12 @@ void UStatBarBase::OnFloatStatUpdated(float OldValue, float NewValue, float MaxV
 	UpdatedWidget();
 }
 
+void UStatBarBase::SetDetailed(bool NewDetails)
+{
+	Details = NewDetails;
+	UpdatedWidget();
+}
+
 void UStatBarBase::NativeOnInitialized()
 {
 	Super::NativeOnInitialized();
@@ -95,7 +101,7 @@ void UStatBarBase::UpdatedWidget()
 	PercentBar_Empty->SetBrushColor(BarBackgroundColor);
 
 	NameText->SetText(FText::FromString(NameValue));
-	if (Detailed)
+	if (Details)
 	{
 		ProcessCurrentValueText();
 		ValueText->SetText(CurrentValueText);
@@ -123,7 +129,7 @@ void UStatBarBase::PostEditChangeProperty(struct FPropertyChangedEvent& Property
 		: NAME_None).ToString();
 
 	if (PropertyName == TEXT("CurrentPercentage") || PropertyName == TEXT("CurrentValue") || PropertyName ==
-		TEXT("NameValue") || PropertyName == TEXT("Detailed"))
+		TEXT("NameValue") || PropertyName == TEXT("Details"))
 	{
 		UpdatedWidget();
 	}

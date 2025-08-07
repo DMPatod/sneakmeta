@@ -5,6 +5,7 @@
 #include "StandardHudBase.generated.h"
 
 class UDefaultHudLayoutBase;
+class UDebugHudLayoutBase;
 
 UENUM(BlueprintType)
 enum class EHudViewMode : uint8
@@ -15,15 +16,15 @@ enum class EHudViewMode : uint8
 };
 
 UCLASS(ABSTRACT)
-class WIDGETSANDUI_API AStandardHudBase : public AHUD
+class SNEAKMETACORE_API AStandardHudBase : public AHUD
 {
 
 public:
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UDefaultHudLayoutBase> DefaultLayoutClass = nullptr;
 
-	/*UPROPERTY(EditAnywhere)
-	TSubclassOf<UDebugHudLayoutBase> DebugLayoutClass = nullptr;*/
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UDebugHudLayoutBase> DebugLayoutClass = nullptr;
 
 	UFUNCTION(BlueprintCallable)
 	void SetCurrentViewMode(EHudViewMode NewViewMode);
@@ -42,8 +43,8 @@ private:
 	UPROPERTY()
 	TObjectPtr<UDefaultHudLayoutBase>  DefaultLayoutWidget = nullptr;
 
-	//UPROPERTY()
-	//TObjectPtr<UDebugHudLayoutBase> DebugLayoutWidget = nullptr;
+	UPROPERTY()
+	TObjectPtr<UDebugHudLayoutBase> DebugLayoutWidget = nullptr;
 
 	//UPROPERTY()
 	//TObjectPtr<ACharacterCourseBase> PlayerCharacter;

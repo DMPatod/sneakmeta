@@ -10,11 +10,6 @@
 			"LoadingPhase": "Default"
 		},
 		{
-			"Name": "WidgetsAndUi",
-			"Type": "Runtime",
-			"LoadingPhase": "Default"
-		},
-		{
 			"Name": "SneakMetaCore",
 			"Type": "Runtime",
 			"LoadingPhase": "Default",

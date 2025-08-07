@@ -10,7 +10,7 @@
  *
  */
 UCLASS(Abstract)
-class WIDGETSANDUI_API UItemDialogBase : public UWidgetBase
+class SNEAKMETACORE_API UItemDialogBase : public UWidgetBase
 {
 public:
 

@@ -10,17 +10,29 @@ class UBorder;
 class UTextBlock;
 
 UCLASS(Abstract)
-class WIDGETSANDUI_API UStatBarBase : public UWidgetBase
+class SNEAKMETACORE_API UStatBarBase : public UWidgetBase
 {
 public:
-	UPROPERTY(EditAnywhere, Category = "Visibility Controls")
-	bool Detailed = false;
-
 	UFUNCTION()
 	void OnIntStatUpdated(int32 OldValue, int32 NewValue, int32 MaxValue);
 
 	UFUNCTION()
 	void OnFloatStatUpdated(float OldValue, float NewValue, float MaxValue);
+
+	UPROPERTY(EditAnywhere, Category = "Stat Bar", meta = (MaxLength = 10))
+	FString NameValue = "#####";
+
+	UFUNCTION()
+	void SetDetailed(bool NewDetails);
+
+	UPROPERTY(EditAnywhere, Category = "Stat Bar")
+	FLinearColor BarForegroundColor = FLinearColor(1.0f, 1.0f, 1.0f, 1.0f);
+
+	UPROPERTY(EditAnywhere, Category = "Stat Bar")
+	FLinearColor BarBackgroundColor = FLinearColor(0.045f, 0.067f, 0.04f, 0.3f);
+
+	UPROPERTY(EditAnywhere, Category = "Stat Bar")
+	FLinearColor MakerColor = FLinearColor(1.0f, 1.0f, 1.0f, 0.3f);
 
 #if WITH_EDITOR
 	virtual void OnDesignerChanged(const FDesignerChangedEventArgs& EventArgs) override;
@@ -56,16 +68,7 @@ protected:
 
 private:
 	UPROPERTY(EditAnywhere, Category = "Stat Bar")
-	FLinearColor BarForegroundColor = FLinearColor(1.0f, 1.0f, 1.0f, 1.0f);
-
-	UPROPERTY(EditAnywhere, Category = "Stat Bar")
-	FLinearColor BarBackgroundColor = FLinearColor(0.045f, 0.067f, 0.04f, 0.3f);
-
-	UPROPERTY(EditAnywhere, Category = "Stat Bar")
-	FLinearColor MakerColor = FLinearColor(1.0f, 1.0f, 1.0f, 0.3f);
-
-	UPROPERTY(EditAnywhere, Category = "Stat Bar|Testing", meta = (MaxLength = 10))
-	FString NameValue = "Example";
+	bool Details = false;
 
 	UPROPERTY(EditAnywhere, Category = "Stat Bar|Testing",
 		meta = (ClampMin = 0, UIMin = 0, ClampMax = 1, UIMax = 1, Units = "Percent"))

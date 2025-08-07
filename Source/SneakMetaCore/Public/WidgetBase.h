@@ -5,7 +5,7 @@
 #include "WidgetBase.generated.h"
 
 UCLASS(Abstract)
-class WIDGETSANDUI_API UWidgetBase : public UUserWidget
+class SNEAKMETACORE_API UWidgetBase : public UUserWidget
 {
 public:
 #if WITH_EDITOR

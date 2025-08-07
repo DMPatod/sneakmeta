@@ -2,7 +2,7 @@
 
 #include "HealthStaminaBarsBase.h"
 #include "DefaultHudLayoutBase.h"
-//#include "DebugHudLayoutBase.h"
+#include "DebugHudLayoutBase.h"
 #include "StatBarBase.h"
 
 void AStandardHudBase::SetCurrentViewMode(EHudViewMode NewViewMode)
@@ -19,15 +19,15 @@ void AStandardHudBase::BeginPlay()
 	checkf(World, TEXT("Failed to reference World."));
 
 	checkf(DefaultLayoutClass, TEXT("Invalid MinimalLayoutClass reference."));
-	//checkf(DebugLayoutClass, TEXT("Invalid OverloadLayoutClass reference."));
+	checkf(DebugLayoutClass, TEXT("Invalid OverloadLayoutClass reference."));
 
 	DefaultLayoutWidget = CreateWidget<UDefaultHudLayoutBase>(World, DefaultLayoutClass);
 	DefaultLayoutWidget->AddToViewport();
 	DefaultLayoutWidget->SetVisibility(ESlateVisibility::Collapsed);
 
-	//DebugLayoutWidget = CreateWidget<UDebugHudLayoutBase>(World, DebugLayoutClass);
-	//DebugLayoutWidget->AddToViewport();
-	//DebugLayoutWidget->SetVisibility(ESlateVisibility::Collapsed);
+	DebugLayoutWidget = CreateWidget<UDebugHudLayoutBase>(World, DebugLayoutClass);
+	DebugLayoutWidget->AddToViewport();
+	DebugLayoutWidget->SetVisibility(ESlateVisibility::Collapsed);
 
 	//if (APlayerController* PlayerController = GetOwningPlayerController())
 	//{
@@ -49,7 +49,7 @@ void AStandardHudBase::UpdateWidgets()
 	ClearAllHandlers();
 
 	DefaultLayoutWidget->SetVisibility(ESlateVisibility::Collapsed);
-	//DebugLayoutWidget->SetVisibility(ESlateVisibility::Collapsed);
+	DebugLayoutWidget->SetVisibility(ESlateVisibility::Collapsed);
 
 	switch (CurrentViewMode)
 	{
@@ -66,8 +66,8 @@ void AStandardHudBase::UpdateWidgets()
 		/*PlayerCharacter->OnHealthChanged.AddDynamic(DebugLayoutWidget->BaseBars->HealthBar,
 			&UStatBarBase::OnIntStatUpdated);
 		PlayerCharacter->OnStaminaChanged.AddDynamic(DebugLayoutWidget->BaseBars->StaminaBar,
-			&UStatBarBase::OnFloatStatUpdated);
-		DebugLayoutWidget->SetVisibility(ESlateVisibility::Visible);*/
+			&UStatBarBase::OnFloatStatUpdated);*/
+		DebugLayoutWidget->SetVisibility(ESlateVisibility::Visible);
 		break;
 	default:;
 	}

@@ -11,7 +11,7 @@ class UHealthStaminaBarsBase;
 class UImage;
 
 UCLASS(ABSTRACT)
-class WIDGETSANDUI_API UDefaultHudLayoutBase : public UWidgetBase
+class SNEAKMETACORE_API UDefaultHudLayoutBase : public UWidgetBase
 {
 public:
 	UPROPERTY(BlueprintReadOnly, Category = "Constituent Controls", meta = (BindWidget))
@@ -23,9 +23,7 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "Definitions", meta = (ClampMin = 0, UIMin = 0))
 	float CrosshairSize = 32.f;
 private:
-
 	virtual void NativeConstruct() override;
 
 	GENERATED_BODY()
-
 };
