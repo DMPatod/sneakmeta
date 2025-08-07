@@ -15,7 +15,7 @@ enum class EHudViewMode : uint8
 };
 
 UCLASS(ABSTRACT)
-class SNEAKMETA_API AStandardHudBase : public AHUD
+class WIDGETSANDUI_API AStandardHudBase : public AHUD
 {
 
 public:

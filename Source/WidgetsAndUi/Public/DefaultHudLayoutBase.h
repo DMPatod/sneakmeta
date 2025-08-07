@@ -11,7 +11,7 @@ class UHealthStaminaBarsBase;
 class UImage;
 
 UCLASS(ABSTRACT)
-class SNEAKMETA_API UDefaultHudLayoutBase : public UWidgetBase
+class WIDGETSANDUI_API UDefaultHudLayoutBase : public UWidgetBase
 {
 public:
 	UPROPERTY(BlueprintReadOnly, Category = "Constituent Controls", meta = (BindWidget))

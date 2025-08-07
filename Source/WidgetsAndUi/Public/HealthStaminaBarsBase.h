@@ -9,7 +9,7 @@
 class UStatBarBase;
 
 UCLASS(Abstract)
-class SNEAKMETA_API UHealthStaminaBarsBase : public UWidgetBase
+class WIDGETSANDUI_API UHealthStaminaBarsBase : public UWidgetBase
 {
 public:
 	UPROPERTY(BlueprintReadOnly, Category = "Constituent Controls", meta = (BindWidget))
