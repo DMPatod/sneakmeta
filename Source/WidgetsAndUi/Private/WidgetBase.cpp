@@ -4,7 +4,7 @@
 
 const FText UWidgetBase::GetPaletteCategory()
 {
-	return NSLOCTEXT("UMG", "CustomPaletteCategory", "Player UI");
+	return NSLOCTEXT("UMG", "CustomPaletteCategory", "Customs Widgets");
 }
 
 #endif
