@@ -4,6 +4,7 @@
 #include "GameFramework/HUD.h"
 #include "StandardHudBase.generated.h"
 
+class APlayerCharacterBase;
 class UDefaultHudLayoutBase;
 class UDebugHudLayoutBase;
 
@@ -46,8 +47,8 @@ private:
 	UPROPERTY()
 	TObjectPtr<UDebugHudLayoutBase> DebugLayoutWidget = nullptr;
 
-	//UPROPERTY()
-	//TObjectPtr<ACharacterCourseBase> PlayerCharacter;
+	UPROPERTY()
+	TObjectPtr<APlayerCharacterBase> PlayerCharacter;
 
 	void UpdateWidgets();
 	void ClearAllHandlers();

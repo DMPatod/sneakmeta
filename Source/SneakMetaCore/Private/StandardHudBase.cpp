@@ -4,6 +4,7 @@
 #include "DefaultHudLayoutBase.h"
 #include "DebugHudLayoutBase.h"
 #include "StatBarBase.h"
+#include "PlayerCharacterBase.h"
 
 void AStandardHudBase::SetCurrentViewMode(EHudViewMode NewViewMode)
 {
@@ -29,11 +30,11 @@ void AStandardHudBase::BeginPlay()
 	DebugLayoutWidget->AddToViewport();
 	DebugLayoutWidget->SetVisibility(ESlateVisibility::Collapsed);
 
-	//if (APlayerController* PlayerController = GetOwningPlayerController())
-	//{
-	//	PlayerCharacter = Cast<ACharacterCourseBase>(PlayerController->GetPawn());
-	//}
-	//checkf(PlayerCharacter, TEXT("Unable to get a reference to the player character."));
+	if (APlayerController* PlayerController = GetOwningPlayerController())
+	{
+		PlayerCharacter = Cast<APlayerCharacterBase>(PlayerController->GetPawn());
+	}
+	checkf(PlayerCharacter, TEXT("Unable to get a reference to the player character."));
 
 	UpdateWidgets();
 }
@@ -56,28 +57,27 @@ void AStandardHudBase::UpdateWidgets()
 	case EHudViewMode::Clean:
 		break;
 	case EHudViewMode::Default:
-		/*PlayerCharacter->OnHealthChanged.AddDynamic(DefaultLayoutWidget->BaseBars->HealthBar,
+		PlayerCharacter->OnHealthChanged.AddDynamic(DefaultLayoutWidget->BaseBars->HealthBar,
 			&UStatBarBase::OnIntStatUpdated);
 		PlayerCharacter->OnStaminaChanged.AddDynamic(DefaultLayoutWidget->BaseBars->StaminaBar,
-			&UStatBarBase::OnFloatStatUpdated);*/
+			&UStatBarBase::OnFloatStatUpdated);
 		DefaultLayoutWidget->SetVisibility(ESlateVisibility::Visible);
 		break;
 	case EHudViewMode::Debug:
-		/*PlayerCharacter->OnHealthChanged.AddDynamic(DebugLayoutWidget->BaseBars->HealthBar,
+		PlayerCharacter->OnHealthChanged.AddDynamic(DebugLayoutWidget->BaseBars->HealthBar,
 			&UStatBarBase::OnIntStatUpdated);
 		PlayerCharacter->OnStaminaChanged.AddDynamic(DebugLayoutWidget->BaseBars->StaminaBar,
-			&UStatBarBase::OnFloatStatUpdated);*/
+			&UStatBarBase::OnFloatStatUpdated);
 		DebugLayoutWidget->SetVisibility(ESlateVisibility::Visible);
 		break;
 	default:;
 	}
 
-	//PlayerCharacter->BroadcastCurrentStats();
+	PlayerCharacter->BroadcastCurrentStats();
 }
 
 void AStandardHudBase::ClearAllHandlers()
 {
-	//PlayerCharacter->OnHealthChanged.Clear();
-	//PlayerCharacter->OnStaminaChanged.Clear();
-	//PlayerCharacter->OnKeyWalletAction.Clear();
+	PlayerCharacter->OnHealthChanged.Clear();
+	PlayerCharacter->OnStaminaChanged.Clear();
 }

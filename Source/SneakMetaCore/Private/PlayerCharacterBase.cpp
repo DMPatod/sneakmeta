@@ -42,12 +42,9 @@ void APlayerCharacterBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (GetMovementComponent())
+	if (GetActorForwardVector().IsNearlyZero())
 	{
-		if (GetMovementComponent()->GetForwardVector().IsZero())
-		{
-			SetSprinting(false);
-		}
+		SetSprinting(false);
 	}
 
 	float CurrentStaminaRegenRate = StaminaRegenRate;
@@ -130,6 +127,10 @@ void APlayerCharacterBase::SetSprinting(bool IsSprinting)
 	bIsSprinting = IsSprinting;
 
 	GetCharacterMovement()->MaxWalkSpeed = bIsSprinting ? NormalMaxWalkSpeed : SprintingMaxWalkSpeed;
+	if (bIsSprinting && bIsCrouched)
+	{
+		UnCrouch();
+	}
 }
 
 void APlayerCharacterBase::ToggleSprint()
