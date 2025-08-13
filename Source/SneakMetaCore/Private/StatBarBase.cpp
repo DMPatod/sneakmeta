@@ -22,7 +22,7 @@ void UStatBarBase::OnFloatStatUpdated(float OldValue, float NewValue, float MaxV
 	UpdatedWidget();
 }
 
-void UStatBarBase::SetDetailed(bool NewDetails)
+void UStatBarBase::SetDetails(bool NewDetails)
 {
 	Details = NewDetails;
 	UpdatedWidget();

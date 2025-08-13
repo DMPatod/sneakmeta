@@ -23,7 +23,7 @@ public:
 	FString NameValue = "#####";
 
 	UFUNCTION()
-	void SetDetailed(bool NewDetails);
+	void SetDetails(bool NewDetails);
 
 	UPROPERTY(EditAnywhere, Category = "Stat Bar")
 	FLinearColor BarForegroundColor = FLinearColor(1.0f, 1.0f, 1.0f, 1.0f);

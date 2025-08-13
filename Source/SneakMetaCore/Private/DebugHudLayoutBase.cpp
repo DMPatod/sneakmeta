@@ -11,7 +11,7 @@ void UDebugHudLayoutBase::NativeConstruct()
 
 	if (BaseBars)
 	{
-		BaseBars->Details = true;
+		BaseBars->SetDetails(true);
 	}
 
 	if (Crosshair)

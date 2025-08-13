@@ -2,16 +2,14 @@
 
 #include "StatBarBase.h"
 
-void UHealthStaminaBarsBase::NativeOnInitialized()
+void UHealthStaminaBarsBase::SetDetails(bool Details)
 {
-	Super::NativeOnInitialized();
-
-	if (HealthBar)
-	{
-		HealthBar->SetDetailed(Details);
-	}
-	if (StaminaBar)
-	{
-		StaminaBar->SetDetailed(Details);
-	}
+    if (HealthBar)
+    {
+        HealthBar->SetDetails(Details);
+    }
+    if (StaminaBar)
+    {
+        StaminaBar->SetDetails(Details);
+    }
 }
